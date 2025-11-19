@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleTagManager gtmId="GTM-MC8QD7T9" />
+        <GoogleTagManager gtmId="GTM-PJMR52G2" />
       </head>
       <body>
         {children}
