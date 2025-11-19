@@ -56,9 +56,9 @@ const ChatPopup = ({ onClose, profilePhoto, conversationData, conversationName }
         </div>
         <div className="bg-gray-200 p-4 space-y-4 h-[28rem] overflow-y-scroll">
           {conversationData.map((msg, index) => msg.type === "incoming" ? (
-            <div key={index} className="flex justify-start"><div className="bg-white rounded-lg p-3 max-w-[80%] shadow"><p className={text-sm ${msg.isBlocked ? "font-semibold text-red-500" : "text-gray-800"}}>{msg.content}</p><p className="text-right text-xs text-gray-400 mt-1">{msg.time}</p></div></div>
+            <div key={index} className="flex justify-start"><div className="bg-white rounded-lg p-3 max-w-[80%] shadow"><p className={`text-sm ${msg.isBlocked ? "font-semibold text-red-500" : "text-gray-800"}`}>{msg.content}</p><p className="text-right text-xs text-gray-400 mt-1">{msg.time}</p></div></div>
           ) : (
-            <div key={index} className="flex justify-end"><div className="bg-lime-200 rounded-lg p-3 max-w-[80%] shadow"><p className={text-sm ${msg.isBlocked ? "font-semibold text-red-500" : "text-gray-800"}}>{msg.content}</p><div className="flex justify-end items-center mt-1"><span className="text-xs text-gray-500 mr-1">{msg.time}</span><CheckCheck className="h-4 w-4 text-blue-500" /></div></div></div>
+            <div key={index} className="flex justify-end"><div className="bg-lime-200 rounded-lg p-3 max-w-[80%] shadow"><p className={`text-sm ${msg.isBlocked ? "font-semibold text-red-500" : "text-gray-800"}`}>{msg.content}</p><div className="flex justify-end items-center mt-1"><span className="text-xs text-gray-500 mr-1">{msg.time}</span><CheckCheck className="h-4 w-4 text-blue-500" /></div></div></div>
           ))}
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-5 text-center bg-gradient-to-t from-white via-white/95 to-transparent"><p className="text-gray-700 font-medium">To view the full conversation, you need to unlock the chats.</p></div>
@@ -383,9 +383,9 @@ export default function U1() {
   }
 
   const handlePhoneInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = e.target.value.replace(/[^0-9-()\s]/g, "")
+    const formattedValue = e.target.value.replace(/[^0-9\-$$$$\s]/g, "")
     setPhoneNumber(formattedValue)
-    setIsPhotoPrivate(false) // Reseta o aviso ao digitar novo número
+    setIsPhotoPrivate(false)
     setPhotoError("")
     if (debounceTimeout) clearTimeout(debounceTimeout)
     const newTimeout = setTimeout(() => {
